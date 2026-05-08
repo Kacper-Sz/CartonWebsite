@@ -88,3 +88,84 @@ function observeRevealElements() {
 if (getComputedStyle(main).visibility !== 'hidden') {
   observeRevealElements();
 }
+
+// ─── EASTER EGG: wpisz "carton" gdziekolwiek ──
+
+(function () {
+  const SECRET = 'carton';
+  let buffer = '';
+  let cooldown = false;
+
+  // Overlay element
+  const egg = document.createElement('div');
+  egg.id = 'easter-egg';
+  egg.innerHTML = `
+    <img src="src/xd.gif" alt="" />
+    <button id="egg-close" aria-label="Zamknij">✕</button>
+  `;
+  egg.style.cssText = `
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #000;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  `;
+  const eggImg = egg.querySelector('img');
+  eggImg.style.cssText = `
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  `;
+  const eggClose = egg.querySelector('#egg-close');
+  eggClose.style.cssText = `
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 0.4rem 0.7rem;
+    border-radius: 8px;
+    cursor: pointer;
+  `;
+  document.body.appendChild(egg);
+
+  function showEgg() {
+    egg.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hideEgg() {
+    egg.style.display = 'none';
+    document.body.style.overflow = '';
+    cooldown = true;
+    setTimeout(() => { cooldown = false; }, 2000);
+  }
+
+  eggClose.addEventListener('click', (e) => {
+    e.stopPropagation();
+    hideEgg();
+  });
+  egg.addEventListener('click', hideEgg);
+
+  document.addEventListener('keydown', (e) => {
+    // Ignore keypresses inside inputs/textareas
+    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+    if (cooldown) return;
+
+    buffer += e.key.toLowerCase();
+    // Keep only last N chars
+    if (buffer.length > SECRET.length) buffer = buffer.slice(-SECRET.length);
+
+    if (buffer === SECRET) {
+      buffer = '';
+      showEgg();
+    }
+  });
+})();
