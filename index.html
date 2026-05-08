@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carton – Twój magazyn pod kontrolą</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       INTRO SEQUENCE
+  ═══════════════════════════════════════ -->
+  <div id="intro" class="intro-overlay">
+
+    <!-- STAGE 1: closed box with tape -->
+    <div class="intro-stage" id="stage-closed">
+      <img src="src/logo_zamkniete.png" alt="Zamknięty karton" class="box-img" id="box-closed" />
+      <button id="btn-open" class="open-btn">
+        <span class="btn-icon">✦</span>
+        Rozepnij karton
+      </button>
+    </div>
+
+    <!-- STAGE 2: box without tape -->
+    <div class="intro-stage hidden" id="stage-notape">
+      <img src="src/logo_bez_tasmy.png" alt="Karton bez taśmy" class="box-img" />
+    </div>
+
+    <!-- STAGE 3: open box + items flying out -->
+    <div class="intro-stage hidden" id="stage-open">
+      <div class="open-scene">
+        <!-- floating items above box -->
+        <div class="floating-items" id="floating-items">
+          <span class="item item-1"><img src="src/shirt.png" alt="" /></span>
+          <span class="item item-2"><img src="src/notebook.png" alt="" /></span>
+          <span class="item item-3"><img src="src/screws.png" alt="" /></span>
+          <span class="item item-4"><img src="src/jablko.png" alt="" /></span>
+          <span class="item item-5"><img src="src/milk.png" alt="" /></span>
+        </div>
+        <img src="src/logo_otwarte.png" alt="Otwarty karton" class="box-img box-open-img" id="box-open" />
+      </div>
+    </div>
+
+    <!-- STAGE 4: logo lockup — box left + text right + floating items -->
+    <div class="intro-stage hidden" id="stage-logo">
+      <div class="stage-logo-inner">
+        <div class="logo-floating-items">
+          <span class="litem litem-1"><img src="src/shirt.png" alt="" /></span>
+          <span class="litem litem-2"><img src="src/notebook.png" alt="" /></span>
+          <span class="litem litem-3"><img src="src/screws.png" alt="" /></span>
+          <span class="litem litem-4"><img src="src/jablko.png" alt="" /></span>
+          <span class="litem litem-5"><img src="src/milk.png" alt="" /></span>
+        </div>
+        <div class="logo-lockup">
+          <img src="src/logo_otwarte.png" alt="Carton logo" class="lockup-box" />
+          <div class="lockup-text">
+            <span class="lockup-name" id="brand-name">Carton</span>
+            <span class="lockup-tagline" id="brand-tagline">Twój magazyn pod kontrolą.</span>
+          </div>
+        </div>
+        <button id="btn-enter" class="enter-btn">
+          Odkryj aplikację <span class="arrow">↓</span>
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /intro -->
+
+
+  <!-- ═══════════════════════════════════════
+       MAIN PAGE (hidden until intro done)
+  ═══════════════════════════════════════ -->
+  <div id="main" class="main-hidden">
+
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="nav-logo">
+        <img src="src/logo_otwarte.png" alt="Carton" class="nav-icon" />
+        <span>Carton</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">O aplikacji</a></li>
+        <li><a href="#features">Funkcje</a></li>
+        <li><a href="#how">Jak działa</a></li>
+        <li><a href="#download" class="nav-cta">Pobierz</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg-pattern"></div>
+      <div class="hero-content">
+        <h1 class="hero-title reveal">
+          Twoje rzeczy.<br />
+          <em>Nareszcie</em> pod kontrolą.
+        </h1>
+        <p class="hero-sub reveal">
+          Carton to lekka aplikacja do zarządzania fizycznymi zasobami — dla Ciebie, małej firmy i całego magazynu. Prosto, szybko, wszędzie.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="https://kacper-sz.github.io/test-apk/" class="btn-primary">Wypróbuj Carton</a>
+          <a href="#features" class="btn-ghost">Zobacz jak działa →</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="mockup-card">
+          <div class="mockup-topbar">
+            <span class="topbar-title">Carton</span>
+          </div>
+          <div class="mockup-body mockup-photo">
+            <img src="src/produkty.jpg" alt="Carton – widok produktów" class="mockup-screenshot" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="problem reveal-section">
+      <div class="container">
+        <div class="section-label">Problem</div>
+        <h2>Zarządzanie zasobami <br />bywa <em>nieznośnie</em> trudne oraz <em>czasochłonne</em>.</h2>
+        <div class="problem-grid">
+          <div class="problem-card reveal-left">
+            <span class="problem-icon">⏱</span>
+            <h3>Czasochłonne katalogowanie</h3>
+            <p>Ręczne indeksowanie przedmiotów to godziny straconego czasu i dziesiątki arkuszy.</p>
+          </div>
+          <div class="problem-card reveal">
+            <span class="problem-icon">💸</span>
+            <h3>Drogie systemy ERP</h3>
+            <p>Gotowe systemy są projektowane dla wielkich firm — drogie, skomplikowane i przeładowane funkcjami.</p>
+          </div>
+          <div class="problem-card reveal-right">
+            <span class="problem-icon">📵</span>
+            <h3>Brak prostych rozwiązań</h3>
+            <p>Osoby prywatne i małe firmy nie mają gdzie szukać — między kartką papieru a korporacyjnym ERP jest ogromna luka.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT: PWA + AZURE -->
+    <section class="about reveal-section" id="about">
+      <div class="container">
+        <div class="section-label">O aplikacji</div>
+        <h2>Progressive Web App z chmurą Azure</h2>
+        <p>
+          Carton to instalowalna aplikacja webowa (PWA) — działa offline, możesz ją zainstalować na telefonie
+          lub komputerze i otrzymywać powiadomienia. Dzięki mechanizmom PWA (service worker, cache,
+          background sync) aplikacja pozostaje responsywna nawet przy słabym połączeniu.
+        </p>
+        <p>
+          Dane są synchronizowane z chmurą Microsoft Azure — bezpieczne przechowywanie, automatyczne
+          kopie i skalowalny backend. Połączenie z Azure umożliwia logowanie, synchronizację między
+          urządzeniami oraz szybkie zapytania w czasie rzeczywistym przy użyciu serwerlessowych
+          funkcji i usług baz danych.
+        </p>
+        <p class="muted">Pro tip: zainstaluj Carton na ekranie startowym, aby uzyskać działanie podobne do natywnej aplikacji.</p>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-label">Funkcje</div>
+        <h2>Wszystko czego potrzebujesz,<br />nic czego nie potrzebujesz.</h2>
+
+        <div class="features-list">
+
+          <div class="feature-row reveal">
+            <div class="feature-text reveal-left">
+              <span class="feature-num">01</span>
+              <h3>Kontenery i zasoby</h3>
+              <p>Organizuj co chcesz jak chcesz. Kontener to półka, szafka, lodówka, garaż — cokolwiek. Zasoby to wszystko co w nim trzymasz. Przesuwaj je między kontenerami jednym tapnięciem.</p>
+            </div>
+            <div class="feature-visual reveal-right">
+              <div class="feat-card feat-photo-card">
+                <img src="src/kontenery.jpg" alt="Kontenery i zasoby w Carton" class="feat-photo" />
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-row reverse reveal">
+            <div class="feature-text reveal-right">
+              <span class="feature-num">02</span>
+              <h3>Skanowanie i AI</h3>
+              <p>Skieruj kamerę na kod kreskowy albo zrób zdjęcie produktu — Carton rozpozna go automatycznie i doda do odpowiedniego kontenera. Zero ręcznego wpisywania.</p>
+            </div>
+            <div class="feature-visual reveal-left">
+              <div class="feat-card scan-card">
+                <div class="scan-frame">
+                  <div class="scan-corner tl"></div>
+                  <div class="scan-corner tr"></div>
+                  <div class="scan-corner bl"></div>
+                  <div class="scan-corner br"></div>
+                  <div class="scan-line"></div>
+                  <span class="scan-label">Rozpoznano: Mleko UHT 1L</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-row reveal">
+            <div class="feature-text reveal-left">
+              <span class="feature-num">03</span>
+              <h3>Daty i powiadomienia</h3>
+              <p>Przypisz datę ważności do każdego zasobu. Carton poinformuje Cię zanim coś wygaśnie, skończy się lub zaginie. Żadnych przykrych niespodzianek.</p>
+            </div>
+            <div class="feature-visual reveal-right">
+              <div class="feat-card feat-photo-card">
+                <img src="src/powiadomienia.jpg" alt="Powiadomienia w Carton" class="feat-photo" />
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-row reverse reveal">
+            <div class="feature-text reveal-right">
+              <span class="feature-num">04</span>
+              <h3>Udostępnianie i uprawnienia</h3>
+              <p>Podziel się kontenerem z rodziną, zespołem lub klientem. Ustaw role: właściciel, edytor, obserwator.</p>
+            </div>
+            <div class="feature-visual reveal-left">
+              <div class="feat-card feat-photo-card">
+                <img src="src/udostepnianie.jpg" alt="Udostępnianie i uprawnienia w Carton" class="feat-photo" />
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-row reveal">
+            <div class="feature-text reveal-left">
+              <span class="feature-num">05</span>
+              <h3>Profil i znajomi</h3>
+              <p>Stwórz swój profil i połącz się ze znajomymi. Dodawaj osoby do kontenerów jednym kliknięciem — bez długich zaproszeń i linków. Twoja sieć kontaktów jest zawsze pod ręką.</p>
+            </div>
+            <div class="feature-visual reveal-right">
+              <div class="feat-card feat-photo-card">
+                <img src="src/profil.jpg" alt="Profil i znajomi w Carton" class="feat-photo" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section class="how" id="how">
+      <div class="container">
+        <div class="section-label">Jak to działa</div>
+        <h2>Od zera do porządku<br />w <em>trzy kroki</em>.</h2>
+        <div class="steps">
+          <div class="step reveal-left">
+            <div class="step-num">1</div>
+            <h3>Utwórz kontener</h3>
+            <p>Nadaj mu nazwę i typ. Lodówka, półka, magazyn — Ty decydujesz co to jest.</p>
+          </div>
+          <div class="step-arrow reveal">→</div>
+          <div class="step reveal">
+            <div class="step-num">2</div>
+            <h3>Dodaj zasoby</h3>
+            <p>Zeskanuj kod kreskowy, zrób zdjęcie lub wpisz ręcznie. Ustaw ilości i daty.</p>
+          </div>
+          <div class="step-arrow reveal">→</div>
+          <div class="step reveal-right">
+            <div class="step-num">3</div>
+            <h3>Zarządzaj i śledź</h3>
+            <p>Filtruj, przeszukuj, udostępniaj. Carton pilnuje reszty i powiadamia Cię gdy coś się dzieje.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALL -->
+    <section class="install reveal-section" id="install">
+      <div class="container">
+        <div class="section-label">Instalacja</div>
+        <h2>Zainstaluj Carton<br />na swoim <em>urządzeniu</em>.</h2>
+        <p class="install-intro">Carton działa jako PWA — możesz go zainstalować jak natywną aplikację, bez App Store i bez Google Play. Oto jak to zrobić na każdym urządzeniu:</p>
+        <div class="install-grid">
+          <div class="install-card reveal-left">
+            <h3>Urządzenie mobilne</h3>
+            <ol class="install-steps">
+              <li>Otwórz <strong>Carton</strong> w przeglądarce.</li>
+              <li>Stuknij menu <strong>⋮</strong> w prawym górnym rogu.</li>
+              <li>Wybierz <strong>„Dodaj do ekranu głównego"</strong>.</li>
+              <li>Potwierdź nazwę i stuknij <strong>„Dodaj" lub "Zainstaluj"</strong>.</li>
+            </ol>
+            <span class="install-tip">Ikona pojawi się na pulpicie jak zwykła aplikacja.</span>
+          </div>
+          
+          <div class="install-card reveal-right">
+            <h3>Komputer</h3>
+            <ol class="install-steps">
+              <li>Otwórz <strong>Carton</strong> w przeglądarce.</li>
+              <li>Kliknij ikonę <strong>instalowania</strong> w pasku adresu.</li>
+              <li>Wybierz <strong>„Zainstaluj"</strong> w oknie dialogowym.</li>
+              <li>Carton otworzy się jako osobne okno aplikacji a ikona doda się na pulpicie.</li>
+            </ol>
+            <span class="install-tip"> Możesz też wejść w menu ⋮ → „Zapisz i udostępnij" → „Zainstaluj jako aplikację".</span>
+          </div>
+        </div>
+        <p class="install-note">Pamiętaj, możesz zawsze używać aplikacji w przeglądarce bez konieczności instalowania jej.</p>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section class="download" id="download">
+      <div class="container download-inner">
+        <img src="src/logo_otwarte.png" alt="Carton" class="dl-logo reveal" />
+        <div class="dl-text">
+          <h2 class="reveal">Gotowy na porządek?</h2>
+          <p class="reveal">Jestes gotowy aby zaczac przygode z cartonem? <br>Szybki i łatwy start. Przetestuj już teraz!</p>
+          <div class="dl-btns reveal">
+            <a href="https://kacper-sz.github.io/test-apk/" class="btn-primary big">Wypróbuj Carton</a>
+            <a href="https://kacper-sz.github.io/test-apk/" class="btn-ghost">Otwórz w przeglądarce →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="src/logo_zamkniete.png" alt="Carton" />
+          <span>Carton</span>
+        </div>
+        <p class="footer-tagline">Twój magazyn pod kontrolą.</p>
+        <p class="footer-copy">© 2025 Carton. Projekt zespołowy.<br>|TEAM SIDD|</p>
+      </div>
+    </footer>
+
+  </div><!-- /main -->
+
+  <script src="script.js"></script>
+</body>
+</html>
